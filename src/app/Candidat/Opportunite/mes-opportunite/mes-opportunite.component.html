@@ -1,0 +1,48 @@
+<div class="container">
+  <!-- <form class="form-inline form-test">
+    <div class="row">
+      <div class="col-6">
+    <div class="form-group mx-sm-3 mb-2">
+      <input type="text" class="form-control" id="inputPassword2" placeholder="Recherche mot clé">
+    </div>
+      </div>
+      <div class="col-6">
+        <button type="submit" class="btn btn-primary mb-2">Recherche</button>
+      </div>
+    </div>
+  </form> -->
+  </div>
+  <form>
+    <!--<div class="form-group form-inline">
+        Full text search: <input class="form-control ml-2" type="text" name="searchTerm" />
+    </div>!-->
+  <div class="table-container">
+  <div class="container">
+    <table class="table table-striped" *ngFor="let oppotunite of listopportunite_cond">
+      <tbody>
+      <tr>
+        <td>
+          <small>{{oppotunite.id_opportunity.title}}</small><br>
+          <small>{{oppotunite.id_opportunity.description}} </small><br>
+          <small>Rémunération Anuelle {{oppotunite.id_opportunity.min_renumeration}}  - {{oppotunite.id_opportunity.max_renumeration}} </small><br>
+        </td>
+        <td style="padding-top: 2rem;">10/12/2020 --> 14/01/2022</td>
+        <td style="padding-top: 2rem;"><small><b>Terminé</b></small></td>
+      </tr>
+      <br>
+      </tbody>
+    </table>
+  </div>
+  </div>
+    <div class="d-flex justify-content-between p-2">
+      <!--<ngb-pagination
+        [collectionSize]="(15 | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
+      </ngb-pagination>!-->
+
+       <!--<select class="custom-select" style="width: auto" name="pageSize">
+        <option [ngValue]="2">2 items per page</option>
+        <option [ngValue]="4">4 items per page</option>
+        <option [ngValue]="6">6 items per page</option>
+      </select>!-->
+    </div>
+  </form>

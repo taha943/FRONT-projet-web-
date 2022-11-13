@@ -1,0 +1,21 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <h2><i>Connexion</i></h2>
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="authForm">
+      <input type="text" id="login" class="fadeIn second" formControlName="email" placeholder="E-mail">
+      <input type="text" id="password" class="fadeIn third" formControlName="mdp" placeholder="Mot de passe">
+      <input type="submit"  class="fadeIn fourth" value="Connexion" (click)="SubmitForm()">
+    </form>
+  </div>
+</div>

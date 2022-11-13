@@ -1,0 +1,110 @@
+<div class="container py-5">
+  <ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
+  <ng-wizard-step [title]="'Step 1'" [description]="'Informations générales'"
+  [canEnter]="isValidTypeBoolean" [canExit]="isValidFunctionReturnsBoolean.bind(this)">
+    <br>
+    <br>
+    <div class="container">
+    <form [formGroup]="infoForm">
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <input type="email"  formControlName="email" class="form-control" placeholder="Enter email" required>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <input type="password" formControlName="mdp" class="form-control" placeholder="Password" required>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <input type="text"  formControlName="num_tel" class="form-control" placeholder="Numero Téléphone" required>
+          </div>
+        </div>
+    </div><br>
+    <div class="row">
+      <div class="col-4">
+        <div class="form-group">
+          <input type="text"   formControlName="github" class="form-control" placeholder="Github">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <input type="text"  formControlName="linkedin" class="form-control" placeholder="Linkedin">
+        </div>
+      </div>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-success" (click)="collectData1()">Sauvgarder et continuer</button>
+    </form>
+  </div>
+ </ng-wizard-step>
+
+
+      <ng-wizard-step [title]="'Step 2'" [description]="'Compétences'"
+      [canEnter]="isValidFunctionReturnsObservable.bind(this)" [canExit]="isValidFunctionReturnsBoolean.bind(this)">
+      <div class="container" style="padding: 2rem 20rem 0rem 20rem;">
+
+        <form [formGroup]="competenceForm">
+          <table class="table table-bordered" formArrayName="competences">
+            <tr>
+              <th colspan="2">Ajouter Vos Compétences:</th>
+              <th width="150px"><button type="button" (click)="addCompetence()" class="btn btn-primary" style="background-color: gray;">Ajouter</button></th>
+            </tr>
+            <tr *ngFor="let competence of competences().controls; let i=index" [formGroupName]="i">
+              <td>
+                  Compétence 1:
+                  <input type="text" formControlName="comp" class="form-control">
+              </td>
+              <td></td>
+              <td>
+                  <button (click)="removecompetence(i)" class="btn btn-danger" style="background-color: grey;">Enlever</button>
+              </td>
+            </tr>
+          </table>
+
+          <button type="submit" class="btn btn-success" (click)="collectData2()">Sauvgarder et continuer</button>
+
+        </form>
+
+        <br/>
+      </div>
+      </ng-wizard-step>
+
+
+
+  <ng-wizard-step [title]="'Step 3'" [description]="'Expérience(s) professionnelle(s)'">
+    <div class="container" style="padding: 2rem 10rem 0rem 10rem;">
+
+      <form [formGroup]="expForm">
+        <table class="table table-bordered" formArrayName="experiences">
+          <tr>
+            <th colspan="2">Ajouter Vos Expériences:</th>
+            <th width="150px"><button type="button" (click)="addExperience()" class="btn btn-primary" style="background-color: gray;">Ajouter</button></th>
+          </tr>
+          <tr *ngFor="let experience of experiences().controls; let i=index" [formGroupName]="i">
+            <td>
+                Expérience 1:
+                <input type="text" formControlName="duree" class="form-control">
+            </td>
+            <td>
+              durée :
+              <input type="text" formControlName="detail" class="form-control">
+            </td>
+            <td>
+                <button (click)="removeExperience(i)" class="btn btn-danger" style="background-color: grey;">Enlever</button>
+            </td>
+          </tr>
+        </table>
+
+        <button type="submit" class="btn btn-success" (click)="collectData3()">Sauvgarder et continuer</button>
+
+      </form>
+
+      <br/>
+    </div>
+      </ng-wizard-step>
+
+  </ng-wizard>
+</div>
